@@ -1,0 +1,44 @@
+<div class='container'>
+  <div class='row col-lg-12 m-2 p-0'>
+    <div class='col-lg-3 pb-2'>
+      <h4>Please upload csv</h4>
+      <%= simple_form_for :person, :url => import_people_path, :method => :post do |f|%>
+        <%= f.input :file, as: :file, label: false %>
+        <%= f.button :submit, "Upload", class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+    <div class='row col-lg-9'>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"><%= sort_link(@q, :full_name, 'Name')%></th>
+            <th scope="col"><%= sort_link(@q, :locations_name, 'Locations')%></th>
+            <th scope="col"><%= sort_link(@q, :species, 'Species')%></th>
+            <th scope="col"><%= sort_link(@q, :gender, 'Gender')%></th>
+            <th scope="col"><%= sort_link(@q, :affiliations_name, 'Affiliations')%></th>
+            <th scope="col"><%= sort_link(@q, :weapon, 'Weapon')%></th>
+            <th scope="col"><%= sort_link(@q, :vehicle, 'Vehicle')%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @people.present? %>
+            <% @people.each do |person| %>
+              <tr>
+                <td><%= person.full_name %></td>
+                <td><%= person.display_locations %></td>
+                <td><%= person.species %></td>
+                <td><%= person.gender %></td>
+                <td><%= person.display_affiliations %></td>
+                <td><%= person.weapon %></td>
+                <td><%= person.vehicle %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <td>No records</td>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @people %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: start_war_characters_development
+
+
+test:
+  <<: *default
+  database: start_war_characters_test

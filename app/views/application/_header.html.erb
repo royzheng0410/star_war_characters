@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'Star War Characters', root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%= search_form_for @q, url: root_path,  class: 'form-inline my-2 my-lg-0' do |f|%>
+      <%= f.search_field :first_name_or_last_name_or_gender_or_species_or_weapon_or_vehicle_or_locations_name_or_affiliations_name_cont, class: 'form-control mr-sm-2' %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</nav>
